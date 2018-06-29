@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Filter Park by Character:</h4>
+<form id="filterPark" action="/park_character_filter" method="post">
+    <fieldset>
+        <label>Parks that has: </label> 
+        <select name="character-selector" id="character-selector">
+            {{#each characters}}
+                <option value="{{characterID}}">{{name}}</option>
+            {{/each}}
+        </select>       
+    </fieldset>
+</form>
+
+<br />
+        
+<h2 class="parkCharacterFilterTableName">List of Parks</h2>
+<table class="parkCharacterFilterTable">
+    <thead>
+        <tr>
+            <th>Character</th>
+            <th>Park</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parkCharactersFilter}}
+            {{#each parkCharactersFilter}}
+                <tr>
+                    <td>{{c_name}}</td>
+                    <td>{{park_name}}</td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>
+
+<script>
+$(document).ready(function() {
+    
+  $("#character-selector").on('change', function(e) {
+      e.preventDefault();
+    charID = $("#character-selector").val();
+      
+      $.ajax({
+        url: '/park_character_filter/' + charID,
+        type: 'GET',
+        data: $('#filterPark').serialize(),
+        success: function(result){
+            window.location.replace("./" + charID);
+        }
+    })
+  });
+});
+</script>

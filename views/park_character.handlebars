@@ -1,0 +1,55 @@
+<h4>Add Character to Park:</h4>
+<form id="addParkCharacter" action="/park_character" method="post">
+    <fieldset>
+        <label>Park:</label> 
+        <select name="parkID">
+            {{#each parks}}
+                <option value="{{parkID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+        <label>Character:</label> 
+        <select name="characterID">
+            {{#each characters}}
+                <option value="{{characterID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Make Changes">
+    </fieldset>
+</form>
+
+<br />
+        
+<h2 class="parkCharacterTableName">List of Characters in Park</h2>
+<table class="parkCharacterTable">
+    <thead>
+        <tr>
+            <th>Character</th>
+            <th>Park</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parkCharacters}}
+            {{#each parkCharacters}}
+                <tr>
+                    <td>{{c_name}}</td>
+                    <td>{{park_name}}</td>
+                    <td>
+                        <button onclick="deleteParkCharacter({{pc_parkID}}, {{pc_characterID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/park_character/{{pc_parkID}}">Update Park</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

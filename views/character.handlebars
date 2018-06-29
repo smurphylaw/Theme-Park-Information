@@ -1,0 +1,50 @@
+<h4>Create New Character:</h4>
+<form id="addcharacter" action="/character" method="post">
+    <fieldset>
+        <label>Name of Character:</label> 
+        <input type="text" name="name">
+        <br />
+        <label>Time Character Appear To Greet:</label>
+        <input type="time" name="startTime">
+        <br />
+        <label>Time Character Finish Greeting:</label> 
+        <input type="time" name="endTime">
+        <br />
+        <br />
+        <input type="submit" value="Add Character">
+    </fieldset>
+</form>
+
+<br />
+
+<h2 class="characterTableName">Character List</h2>
+<table class="characterTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Start Time</th>
+            <th>Finish Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if characters}}
+            {{#each characters}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{startTime}}</td>
+                    <td>{{endTime}}</td>
+                    <td>
+                        <button onclick="deleteCharacter({{characterID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/character/{{characterID}}">Update</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

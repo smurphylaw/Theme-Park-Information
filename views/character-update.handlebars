@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{character.name}}:</h4>
+<form id="character-update" action="/character" method="put">
+    <fieldset>
+        <label>Name of Character:</label> 
+        <input type="text" name="name" value="{{character.name}}">
+        <br />
+        <br />
+        <label>Time Character Appear To Greet:</label>
+        <input type="time" name="startTime" value="{{character.startTime}}">
+        <br />
+        <br />
+        <label>Time Character Finish Greeting:</label> 
+        <input type="time" name="endTime" value="{{character.endTime}}">
+        <br />
+        <br />
+        
+        <input type="hidden" name="id" value="{{character.characterID}}">
+        <button onclick="updateCharacter({{character.characterID}})">Update Character</button>
+    </fieldset>
+</form>

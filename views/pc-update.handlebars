@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{park.name}}'s Characters:</h4>
+<form id="pc-update" action="/park_character" method="put">
+    <fieldset>
+        <label>Park:</label> 
+        <label>{{park.name}}</label>
+        
+        <br />
+        <br />
+        
+        <label>Characters the Park Have:</label> 
+        <br />
+        <br />
+        
+        <table class="parkCharacterTable">
+            <tbody>
+                {{#if singleParkCharacters}}
+                    {{#each singleParkCharacters}}
+                        <tr>
+                            <td>{{c_name}}</td>
+                            <td>
+                                <button onclick="deleteParkCharacter({{pc_parkID}}, {{pc_characterID}})">Remove from Park</button>
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+        
+ 
+        <br />
+        <br />
+        <a href="/park_character/">Add New Characters</a>
+    </fieldset>
+</form>
+
+
+<!--<input type="hidden" name="id" value="">-->
+

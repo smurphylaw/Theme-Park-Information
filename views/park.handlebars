@@ -1,0 +1,54 @@
+<h4>Create New Park:</h4>
+<form id="addPark" action="/park" method="post">
+    <fieldset>
+        <label>Name of Park:</label> 
+        <input type="text" name="name">
+        <br />
+        <label>City:</label>
+        <input type="text" name="city">
+        <br />
+        <label>State:</label> 
+        <input type="text" name="state">
+        <br />
+        <label>Country:</label> 
+        <input type="text" name="country">
+        <br />
+        <input type="submit" id="addPark" value="Add Park">
+    </fieldset>
+</form>
+
+<br />
+
+<h2 class="parkTableName">Park List</h2>
+<table class="parkTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parks}}
+            {{#each parks}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{city}}</td>
+                    <td>{{state}}</td>
+                    <td>{{country}}</td>
+                    <td>
+                        <button onclick="deletePark({{parkID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/park/{{parkID}}">Update</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update Dining Service:</h4>
+<form id="pd-update" action="/park_dining" method="put">
+    <fieldset>
+        <label>Dining Location:</label> 
+        <label>{{dining.name}}</label>
+        
+        <br />
+        <br />
+        
+        <label>Change Park:</label> 
+        <select name="parkID" id="park-selector">
+            {{#each parkOptions}}
+                <option value="{{parkID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+    </fieldset>
+    
+    <button onclick="updateParkDining(parkIDtoPass, {{dining.diningID}}, oldParkID)">Update Dining Location</button>
+
+</form>
+
+
+
+<script>
+$(document).ready(function() {
+    oldParkID = $("#park-selector").val();
+    
+  $("#park-selector").on('change', function(e) {
+    e.preventDefault();
+    parkIDtoPass = $("#park-selector").val();
+  });
+});
+</script>

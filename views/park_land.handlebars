@@ -1,0 +1,55 @@
+<h4>Add Theme Land to Park:</h4>
+<form id="addParkLand" action="/park_land" method="post">
+    <fieldset>
+        <label>Park:</label> 
+        <select name="parkID">
+            {{#each parks}}
+                <option value="{{parkID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+        <label>Theme Land:</label> 
+        <select name="landID">
+            {{#each lands}}
+                <option value="{{landID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Make Changes">
+    </fieldset>
+</form>
+
+<br />
+        
+<h2 class="parkLandTableName">List of Theme Lands in Park</h2>
+<table class="parkLandTable">
+    <thead>
+        <tr>
+            <th>Theme Lands</th>
+            <th>Park</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parksAndLandsList}}
+            {{#each parksAndLandsList}}
+                <tr>
+                    <td>{{land_name}}</td>
+                    <td>{{park_name}}</td>
+                    <td>
+                        <button onclick="deleteParkLand({{pl_parkID}}, {{pl_landID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/park_land/{{pl_parkID}}">Update Park</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

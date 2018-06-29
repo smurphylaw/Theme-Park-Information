@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Modify {{park.name}}'s Attractions:</h4>
+<form id="pa-update" action="/park_attraction" method="put">
+    <fieldset>
+        <label>Park:</label> 
+        <label>{{park.name}}</label>
+        
+        <br />
+        <br />
+        
+        <label>Attractions the Park Have:</label> 
+        <br />
+        <br />
+        
+        <table class="parkAttractionTable">
+            <tbody>
+                {{#if singleParkAttractions}}
+                    {{#each singleParkAttractions}}
+                        <tr>
+                            <td>{{a_name}}</td>
+                            <td>
+                                <button onclick="deleteParkAttraction({{pa_parkID}}, {{pa_attractionID}})">Remove from Park</button>
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+        
+        <br />
+        <br />
+        <a href="/park_attraction/">Add New Attractions</a>
+    </fieldset>
+</form>
+

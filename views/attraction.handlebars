@@ -1,0 +1,45 @@
+<h4>Create New Attraction:</h4>
+<form id="addAttraction" action="/attraction" method="post">
+    <fieldset>
+        <label>Name of Attraction:</label> 
+        <input type="text" name="name">
+        <br />
+        <label>Type of Attraction:</label>
+        <input type="text" name="type">
+        <br />
+        <br />
+        <input type="submit" id="addAttraction" value="Add Attraction">
+    </fieldset>
+</form>
+
+<br />
+
+<h2 class="attractionTableName">Attraction List</h2>
+<table class="attractionTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if attractions}}
+            {{#each attractions}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{type}}</td>
+                    <td>
+                        <button onclick="deleteAttraction({{attractionID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/attraction/{{attractionID}}">Update</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

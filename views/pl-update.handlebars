@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{park.name}}'s Theme Land:</h4>
+<form id="pl-update" action="/park_land" method="put">
+    <fieldset>
+        <label>Park:</label> 
+        <label>{{park.name}}</label>
+        
+        <br />
+        <br />
+        
+        <label>Theme Lands the Park Have:</label> 
+        <br />
+        <br />
+    
+        <table class="parkLandTable">
+        <tbody>
+            {{#if singleParkLands}}
+                {{#each singleParkLands}}
+                    <tr>
+                        <td>{{land_name}}</td>
+                        <td>
+                            <button onclick="deleteParkLand({{pl_parkID}}, {{pl_landID}})">Remove from Park</button>
+                        </td>
+                    </tr>
+                {{/each}}
+            {{/if}}
+        </tbody>
+        </table>
+
+        <br />
+        <br />
+        <a href="/park_land/">Add New Theme Land</a>
+    </fieldset>
+</form>
+

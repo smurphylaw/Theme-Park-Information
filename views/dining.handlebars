@@ -1,0 +1,53 @@
+<h4>Create New Dining Location:</h4>
+<form id="addDining" action="/dining" method="post">
+    <fieldset>
+        <label>Name of Dining Location:</label> 
+        <input type="text" name="name">
+        <br />
+        
+        <label>Type of Service:</label>
+        <input type="text" name="service">
+        <br />
+        
+        <label>Type of Cuisine:</label> 
+        <input type="text" name="cuisine">
+        <br />
+        <br />
+        
+        <input type="submit" id="addDining" value="Add Dining Location">
+    </fieldset>
+</form>
+
+<br />
+
+<h2 class="diningTableName">Dining Location List</h2>
+<table class="diningTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Cuisine</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if dinings}}
+            {{#each dinings}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{service}}</td>
+                    <td>{{cuisine}}</td>
+                    <td>
+                        <button onclick="deleteDining({{diningID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/dining/{{diningID}}">Update</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

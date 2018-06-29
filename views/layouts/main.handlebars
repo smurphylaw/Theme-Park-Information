@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>Database Project</title>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    
+    {{#each jsscripts}}
+        <script src="/static/{{this}}"></script>
+    {{/each}}
+    
+</head>
+<body>
+    
+    <div id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/park">Parks</a></li> 
+        <li><a href="/character">Characters</a></li> 
+        <li><a href="/attraction">Attractions</a></li> 
+        <li><a href="/dining">Dining Locations</a></li> 
+    </div>
+    
+	{{{body}}}
+    
+</body>
+</html>

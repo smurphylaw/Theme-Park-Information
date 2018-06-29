@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{park.name}}:</h4>
+<form id="park-update" action="/park" method="put">
+    <fieldset>
+        <label>Name of Park:</label> 
+        <input type="text" name="name" value="{{park.name}}">
+        <br />
+        <br />
+        
+        <label>City:</label>
+        <input type="text" name="city" value="{{park.city}}">
+        <br />
+        <br />
+        
+        <label>State:</label> 
+        <input type="text" name="state" value="{{park.state}}">
+        <br />
+        <br />
+        
+        <label>Country:</label> 
+        <input type="text" name="country" value="{{park.country}}">
+        <br />
+        <br />
+        
+        <input type="hidden" name="id" value="{{park.parkID}}">
+        <button onclick="updatePark({{park.parkID}})">Update Park</button>
+    </fieldset>
+</form>

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{attraction.name}}:</h4>
+<form id="attraction-update" action="/attraction" method="put">
+    <fieldset>
+        <label>Name of Attraction:</label> 
+        <input type="text" name="name" value="{{attraction.name}}">
+        <br />
+        <br />
+        <label>Type of Attraction:</label>
+        <input type="text" name="type" value="{{attraction.type}}">
+        <br />
+        <br />
+        
+        <input type="hidden" name="id" value="{{attraction.attractionID}}">
+        <button onclick="updateAttraction({{attraction.attractionID}})">Update Attraction</button>
+    </fieldset>
+</form>

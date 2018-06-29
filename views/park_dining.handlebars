@@ -1,0 +1,57 @@
+<h4>Add Dining Location to Park:</h4>
+<form id="addParkDining" action="/park_dining" method="post">
+    <fieldset>
+        <label>Dining Location:</label> 
+        <select name="diningID">
+            {{#each dinings}}
+                <option value="{{diningID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+        
+        <label>Add it to:</label> 
+        <select name="parkID">
+            {{#each parks}}
+                <option value="{{parkID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+        <input type="submit" value="Make Changes">
+    </fieldset>
+</form>
+
+<br />
+        
+<h2 class="parkDiningTableName">List of Dining Services in Park</h2>
+<table class="parkDiningTable">
+    <thead>
+        <tr>
+            <th>Dining Service</th>
+            <th>Park</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parkDinings}}
+            {{#each parkDinings}}
+                <tr>
+                    <td>{{d_name}}</td>
+                    <td>{{park_name}}</td>
+                    <td>
+                        <button onclick="deleteParkDining({{pd_parkID}}, {{pd_diningID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/park_dining/{{pd_diningID}}/{{pd_parkID}}">Update Dining Location</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>

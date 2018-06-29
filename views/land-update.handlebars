@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/style.css">
+
+<h4>Update {{land.name}}:</h4>
+<form id="land-update" action="/land" method="put">
+    <fieldset>
+        <label>Name of Land:</label> 
+        <input type="text" name="name" value="{{land.name}}">
+        <br />
+        <br />
+        
+        <input type="hidden" name="id" value="{{land.landID}}">
+        <button onclick="updateLand({{land.landID}})">Update Land</button>
+    </fieldset>
+</form>

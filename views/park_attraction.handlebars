@@ -1,0 +1,55 @@
+<h4>Modify Attraction within Park:</h4>
+<form id="addParkAttraction" action="/park_attraction" method="post">
+    <fieldset>
+        <label>Park:</label> 
+        <select name="parkID">
+            {{#each parks}}
+                <option value="{{parkID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        
+        <br />
+        <br />
+        <label>Add Attraction to Park:</label> 
+        <select name="attractionID">
+            {{#each attractions}}
+                <option value="{{attractionID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Make Changes">
+    </fieldset>
+</form>
+
+<br />
+        
+<h2 class="parkAttractionTableName">List of Attractions in Park</h2>
+<table class="parkAttractionTable">
+    <thead>
+        <tr>
+            <th>Attraction</th>
+            <th>Park</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#if parkAttractions}}
+            {{#each parkAttractions}}
+                <tr>
+                    <td>{{a_name}}</td>
+                    <td>{{park_name}}</td>
+                    <td>
+                        <button onclick="deleteParkAttraction({{pa_parkID}}, {{pa_attractionID}})">Delete</button>
+                    </td>
+                    <td>
+                        <a href="/park_attraction/{{pa_parkID}}">Update Park</a>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+        
+    </tbody>
+</table>
